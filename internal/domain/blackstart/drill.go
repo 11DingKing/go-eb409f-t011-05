@@ -117,6 +117,9 @@ func (d *Drill) TriggerFallback(plan Plan, reason string) error {
 	if d.Status != StatusExecuting && d.Status != StatusFallback {
 		return fmt.Errorf("%w: cannot fall back from %s", ErrInvalidTransition, d.Status)
 	}
+	if len(plan.BackupPath) == 0 {
+		return ErrNoBackupPath
+	}
 	d.Status = StatusFallback
 	d.Path = "backup"
 	d.CurrentStep = 0
