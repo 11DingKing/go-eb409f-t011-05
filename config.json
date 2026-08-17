@@ -1,0 +1,5 @@
+{
+  "listen_addr": ":48302",
+  "data_path": "/tmp/microgrid-dispatch-state.json",
+  "scheduler_interval": "30s"
+}
